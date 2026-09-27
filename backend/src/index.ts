@@ -2,7 +2,7 @@ import { setDefaultAutoSelectFamily } from 'net';
 import * as Sentry from '@sentry/node';
 import express from 'express';
 import { Pool } from 'pg';
-import type { HealthResponse } from '@sbg/shared';
+import type { HealthResponse } from '@greenblade/shared';
 import { installersRouter } from './routes/installers.js';
 import { jobsRouter } from './routes/jobs.js';
 import { publicHolidaysRouter } from './routes/public-holidays.js';

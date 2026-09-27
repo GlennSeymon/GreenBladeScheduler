@@ -2,8 +2,8 @@ import ms from 'ms';
 import { JobStatus } from '../generated/enums.js';
 import type { DailyForecast } from './weather.js';
 
-// WMO weather codes (as returned by Open-Meteo) severe enough to plausibly delay outdoor rooftop
-// electrical work: rain showers (moderate→violent), heavy/freezing rain, heavy snow, any thunderstorm.
+// WMO weather codes (as returned by Open-Meteo) severe enough to plausibly delay outdoor lawn and
+// garden work: rain showers (moderate→violent), heavy/freezing rain, heavy snow, any thunderstorm.
 const SEVERE_WEATHER_CODES = new Set([65, 66, 67, 75, 80, 81, 82, 86, 95, 96, 99]);
 const WEATHER_CODE_LABELS: Record<number, string> = {
   65: 'heavy rain',
@@ -75,7 +75,7 @@ export function checkBadWeather(forecast: DailyForecast | undefined): AtRiskReas
 
   return {
     rule: 'BAD_WEATHER',
-    message: `Forecast for ${forecast.date} shows ${describeForecast(forecast)} — installation may be delayed`,
+    message: `Forecast for ${forecast.date} shows ${describeForecast(forecast)} — mowing may be delayed`,
   };
 }
 
@@ -91,8 +91,8 @@ export function checkUnassignedStartingSoon(job: AtRiskJob, now: Date): AtRiskRe
     rule: 'UNASSIGNED_STARTING_SOON',
     message:
       msUntilStart < 0
-        ? 'Job was due to start but still has no installer assigned'
-        : `Job starts within ${ms(UNASSIGNED_STARTING_SOON_MS, { long: true })} and still has no installer assigned`,
+        ? 'Job was due to start but still has no crew assigned'
+        : `Job starts within ${ms(UNASSIGNED_STARTING_SOON_MS, { long: true })} and still has no crew assigned`,
   };
 }
 

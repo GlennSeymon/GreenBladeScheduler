@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import type { JobWithRisk } from '@sbg/shared';
+import type { JobWithRisk } from '@greenblade/shared';
 import { apiClient } from './client';
 
 export function useJobs() {

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { AssignJobInput, Job } from '@sbg/shared';
+import type { AssignJobInput, Job } from '@greenblade/shared';
 import { apiClient } from './client';
 
 interface AssignJobVariables {

@@ -14,7 +14,7 @@ const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const dataDir = path.join(__dirname, '../../candidatepack_SBG/candidate');
+const dataDir = path.join(__dirname, '../../candidatepack/candidate');
 
 const JOB_TYPE_BY_CSV_VALUE: Record<string, JobType> = {
   'Battery install': JobType.BATTERY_INSTALL,

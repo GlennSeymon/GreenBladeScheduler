@@ -1,24 +1,25 @@
-# SBGScheduler
+# GreenBladeScheduler
 
-An installer job scheduler for Solar Battery Group, replacing a spreadsheet-based workflow with a single
-view of job status, installer availability, and weather-driven scheduling risk. Built as part of an
-interview take-home. See [clientBrief.md](./clientBrief.md) for the original client brief.
+A job scheduler for GreenBlade Lawn Care (a fictitious lawn mowing and garden maintenance business),
+replacing a spreadsheet-based workflow with a single view of job status, crew availability, and
+weather-driven scheduling risk. Originally built as an interview take-home, reworked afterwards into a
+self-directed portfolio project. See [clientBrief.md](./clientBrief.md) for the brief this project follows.
 
 ## Features
 
 - **Jobs data grid** — table of all jobs with column sorting, pagination, and a status filter
 - **Assign / reschedule workflow** — dialogs (React Hook Form + shared Zod validation) to assign an
-  unscheduled job to an installer and time, or reassign/reschedule an already-scheduled job
-- **Scheduling rule engine** — rejects invalid assignments: double-booking, installer/job state mismatch,
-  outside the installer's shift hours or working days (timezone-aware), during installer leave, or on a
+  unscheduled job to a crew member and time, or reassign/reschedule an already-scheduled job
+- **Scheduling rule engine** — rejects invalid assignments: double-booking, crew/job state mismatch,
+  outside the crew member's shift hours or working days (timezone-aware), during their leave, or on a
   national/state public holiday (highlighted and unselectable in the assign/reschedule calendar)
 - **At-risk flagging** — flags jobs with a bad weather forecast or unassigned jobs starting soon, with a
   filter and a tooltip explaining why
 - **Live weather + geocoding** — Open-Meteo forecast (BOM ACCESS-G model) and geocoding, no API key
   required, cached to avoid hammering the API on every request
 - **Dashboard** — summary cards (counts by status, at-risk, unassigned) and charts (jobs-by-status pie,
-  installer utilisation by scheduled hours)
-- **SBG branding** — palette derived from the Solar Battery Group logo, light/dark theme toggle
+  crew utilisation by scheduled hours)
+- **GreenBlade branding** — a simple green/amber palette and logo mark, light/dark theme toggle
 - **Snackbar notifications** — success/error feedback for assign and reschedule actions
 - **Skeleton loaders** — loading states for the jobs grid (MUI X's default skeleton-row overlay) and the
   dashboard (summary cards + charts)
@@ -55,8 +56,8 @@ interview take-home. See [clientBrief.md](./clientBrief.md) for the original cli
 **1. Clone and install dependencies**
 
 ```bash
-git clone https://github.com/GlennSeymon/SBGScheduler.git
-cd SBGScheduler
+git clone https://github.com/GlennSeymon/GreenBladeScheduler.git
+cd GreenBladeScheduler
 npm install
 ```
 
@@ -80,7 +81,7 @@ PORT=3001
 
 ```bash
 npm run db:migrate --workspace=backend   # apply Prisma migrations to Neon
-npm run db:seed --workspace=backend      # seed from candidatepack_SBG/candidate/*.csv
+npm run db:seed --workspace=backend      # seed from candidatepack/candidate/*.csv
 ```
 
 **4. Run the dev servers**
@@ -109,12 +110,12 @@ npm run test  # run backend + frontend unit tests (Vitest)
 ## Project Structure
 
 ```
-SBGScheduler/
-├── shared/            # Zod schemas + inferred types (@sbg/shared), used by frontend and backend
+GreenBladeScheduler/
+├── shared/            # Zod schemas + inferred types (@greenblade/shared), used by frontend and backend
 ├── backend/
 │   ├── prisma/
 │   │   ├── schema.prisma  # Installer/Job models, migrations against Neon
-│   │   └── seed.ts        # Seeds Neon from candidatepack_SBG/candidate/*.csv
+│   │   └── seed.ts        # Seeds Neon from candidatepack/candidate/*.csv
 │   └── src/
 │       ├── index.ts    # Express entry point
 │       ├── lib/         # Prisma client, rule engine, Open-Meteo geocoding/weather, at-risk calc,
@@ -123,7 +124,7 @@ SBGScheduler/
 │       └── routes/      # installers, jobs (list, assign, reschedule), public-holidays
 ├── frontend/
 │   └── src/           # Vite + React app
-├── candidatepack_SBG/ # Sample jobs.csv / installers.csv + data dictionary for seeding
+├── candidatepack/     # Sample jobs.csv / installers.csv + data dictionary for seeding
 ├── vercel.json        # Vercel Services config — backend under /api, frontend serves everything else
 └── .env.example
 ```
@@ -231,36 +232,36 @@ Sortable, paginated table of all jobs with a status filter and an at-risk toggle
 
 ### Reschedule dialog
 
-Reassigning the installer and/or start time on an already-scheduled job.
+Reassigning the crew and/or start time on an already-scheduled job.
 
 ![Reschedule dialog](screenshots/2jobReschedule.png)
 
 ### Assign dialog with datetime picker filtered with public holidays
 
-Assigning an unscheduled job to an installer and start time — the calendar highlights and blocks
+Assigning an unscheduled job to a crew member and start time — the calendar highlights and blocks
 national and state public holidays.
 
 ![Assign dialog with public holiday highlighted in the calendar](screenshots/3DatePublicHolidayFilter.png)
 
 ### Dashboard
 
-Summary cards (counts by status, at-risk, unassigned) alongside jobs-by-status and installer
+Summary cards (counts by status, at-risk, unassigned) alongside jobs-by-status and crew
 utilisation charts.
 
 ![Dashboard](screenshots/4Dashboard.png)
 
 ### Reschedule dialog — double-booking rejected
 
-The rule engine blocks a reschedule that would double-book the installer, with the reason shown inline
+The rule engine blocks a reschedule that would double-book the crew member, with the reason shown inline
 in the dialog and as a snackbar.
 
-![Reschedule dialog rejecting a double-booked installer](screenshots/5jobRescheduleClash.png)
+![Reschedule dialog rejecting a double-booked crew member](screenshots/5jobRescheduleClash.png)
 
 ### Reschedule dialog — outside working days rejected
 
-The rule engine blocks a reschedule that falls on a day the installer doesn't work.
+The rule engine blocks a reschedule that falls on a day the crew member doesn't work.
 
-![Reschedule dialog rejecting a day outside the installer's working days](screenshots/6jobRescheduleOutsideWorkingHours.png)
+![Reschedule dialog rejecting a day outside the crew member's working days](screenshots/6jobRescheduleOutsideWorkingHours.png)
 
 ## Future Release Plan
 
@@ -274,7 +275,7 @@ Out of scope for this take-home's deadline, but what a follow-up iteration would
   version would push pagination (and filtering/sorting) down to the API so the client never holds the
   full table in memory.
 - **Authentication/authorization** — there's currently no login. At minimum a dispatcher role, and
-  possibly a read-only installer view scoped to their own schedule.
+  possibly a read-only crew view scoped to their own schedule.
 - **Concurrency handling on assign/reschedule** — two dispatchers assigning different jobs to the same
   installer/slot at nearly the same time could both pass rule-engine validation before either write
   lands, since there's no optimistic locking or transaction-level re-check at write time.
@@ -282,18 +283,18 @@ Out of scope for this take-home's deadline, but what a follow-up iteration would
   a customer or installer disputes a reschedule.
 - **Calendar/timeline view** — the jobs grid is a flat table; a per-installer day/week calendar view
   would let a dispatcher spot scheduling gaps and conflicts visually, rather than scanning rows.
-- **Customer/installer notifications** — job records already store phone/email but nothing sends a
+- **Customer/crew notifications** — job records already store phone/email but nothing sends a
   confirmation or reschedule notice today.
 - **Map/travel-time-aware** — a map view was considered during scoping. Eligible
-  installer distance and travel time should be considered rather than simply installer availability in the state.
+  crew distance and travel time should be considered rather than simply crew availability in the state.
 
 ## Deployed link
 
-https://sbg-scheduler-theta.vercel.app
+https://greenblade-scheduler.vercel.app
 
 ## Repo
 
-https://github.com/GlennSeymon/SBGScheduler
+https://github.com/GlennSeymon/GreenBladeScheduler
 
 ## License
 

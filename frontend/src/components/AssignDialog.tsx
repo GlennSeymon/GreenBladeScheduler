@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { assignJobSchema, type AssignJobInput, type Job } from '@sbg/shared';
+import { assignJobSchema, type AssignJobInput, type Job } from '@greenblade/shared';
 import { format } from 'date-fns';
 import { Controller, useForm } from 'react-hook-form';
 import { useAssignJob } from '../api/useAssignJob';
@@ -106,11 +106,11 @@ const AssignDialog = ({ job, open, onClose }: AssignDialogProps) => {
               control={control}
               render={({ field }) => (
                 <FormControl fullWidth error={!!errors.installerId}>
-                  <InputLabel id="assign-installer-label">Installer</InputLabel>
+                  <InputLabel id="assign-installer-label">Crew</InputLabel>
                   <Select
                     {...field}
                     labelId="assign-installer-label"
-                    label="Installer"
+                    label="Crew"
                   >
                     {eligibleInstallers.map((installer) => (
                       <MenuItem key={installer.id} value={installer.id}>

@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ColorModeContext } from './ColorModeContext';
 import { getTheme } from './theme';
 
-const STORAGE_KEY = 'sbg-color-mode';
+const STORAGE_KEY = 'greenblade-color-mode';
 
 function isPaletteMode(value: string | null): value is PaletteMode {
   return value === 'light' || value === 'dark';

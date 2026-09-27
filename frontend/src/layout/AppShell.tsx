@@ -11,9 +11,9 @@ import IconButton from '@mui/material/IconButton';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { AiOutlineSchedule } from 'react-icons/ai';
-import sbgLogo from '../assets/sbg-logo.png';
+import greenBladeLogo from '../assets/greenblade-logo.svg';
 import { useColorMode } from '../theme/ColorModeContext';
-import { brandBlue } from '../theme/theme';
+import { brandGreen } from '../theme/theme';
 
 const Root = styled(Box)({
   display: 'flex',
@@ -64,13 +64,13 @@ const MainContainer = styled(Container)(({ theme }) => ({
 })) as typeof Container;
 
 const StyledAppBar = styled(AppBar)({
-  backgroundColor: brandBlue,
+  backgroundColor: brandGreen,
   backgroundImage: 'none',
   color: '#ffffff',
 });
 
 const Footer = styled(Box)(({ theme }) => ({
-  backgroundColor: brandBlue,
+  backgroundColor: brandGreen,
   color: '#ffffff',
   paddingTop: theme.spacing(2),
   paddingBottom: theme.spacing(2),
@@ -99,7 +99,7 @@ const AppShell = () => {
               >
                 {mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
               </IconButton>
-              <Logo src={sbgLogo} alt="Solar Battery Group" />
+              <Logo src={greenBladeLogo} alt="GreenBlade Lawn Care" />
             </HeaderActions>
           </FlexContainer>
         </StyledToolbar>

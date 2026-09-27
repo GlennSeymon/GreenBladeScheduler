@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { formatInTimeZone } from 'date-fns-tz';
-import { assignJobSchema, rescheduleJobSchema } from '@sbg/shared';
+import { assignJobSchema, rescheduleJobSchema } from '@greenblade/shared';
 import { prisma } from '../lib/prisma.js';
 import { evaluateSchedulingRules, STATE_TIME_ZONES } from '../lib/rule-engine.js';
 import { JobStatus, AustralianState } from '../generated/enums.js';

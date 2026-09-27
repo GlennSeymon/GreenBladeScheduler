@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import type { Job, JobWithRisk } from '@sbg/shared';
+import type { Job, JobWithRisk } from '@greenblade/shared';
 import { useJobs } from '../api/useJobs';
 import AssignDialog from '../components/AssignDialog';
 import AtRiskBadge from '../components/AtRiskBadge';
@@ -35,9 +35,15 @@ const GridWrapper = styled(Box)({
 type StatusFilterValue = Job['status'] | 'ALL';
 
 const JOB_TYPE_LABELS: Record<Job['jobType'], string> = {
-  BATTERY_INSTALL: 'Battery install',
-  SOLAR_BATTERY: 'Solar + battery',
-  BATTERY_UPGRADE: 'Battery upgrade',
+  BATTERY_INSTALL: 'Standard mow',
+  SOLAR_BATTERY: 'Mow + garden tidy',
+  BATTERY_UPGRADE: 'Ride-on service',
+};
+
+const EQUIPMENT_LABELS: Record<string, string> = {
+  '10 kWh': 'Push mower',
+  '13.5 kWh': 'Ride-on mower',
+  '20 kWh': 'Commercial mower + trimmer kit',
 };
 
 const STATUS_LABELS: Record<Job['status'], string> = {
@@ -80,7 +86,13 @@ const baseColumns: GridColDef<JobWithRisk>[] = [
     minWidth: 150,
     valueGetter: (value: Job['jobType']) => JOB_TYPE_LABELS[value],
   },
-  { field: 'batteryModel', headerName: 'Battery model', flex: 1, minWidth: 140 },
+  {
+    field: 'batteryModel',
+    headerName: 'Equipment',
+    flex: 1,
+    minWidth: 140,
+    valueGetter: (value: Job['batteryModel']) => EQUIPMENT_LABELS[value] ?? value,
+  },
   {
     field: 'status',
     headerName: 'Status',
@@ -90,7 +102,7 @@ const baseColumns: GridColDef<JobWithRisk>[] = [
   },
   {
     field: 'assignedInstaller',
-    headerName: 'Installer',
+    headerName: 'Crew',
     flex: 1,
     minWidth: 150,
     valueGetter: (_value, row) => row.assignedInstaller?.name ?? 'Unassigned',

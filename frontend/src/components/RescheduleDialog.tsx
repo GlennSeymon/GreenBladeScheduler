@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { rescheduleJobSchema, type RescheduleJobInput, type Job } from '@sbg/shared';
+import { rescheduleJobSchema, type RescheduleJobInput, type Job } from '@greenblade/shared';
 import { format } from 'date-fns';
 import { Controller, useForm, type FieldErrors } from 'react-hook-form';
 import { useEligibleInstallers } from '../api/useEligibleInstallers';
@@ -115,12 +115,12 @@ const RescheduleDialog = ({ job, open, onClose }: RescheduleDialogProps) => {
               control={control}
               render={({ field }) => (
                 <FormControl fullWidth error={!!errors.installerId}>
-                  <InputLabel id="reschedule-installer-label">Installer</InputLabel>
+                  <InputLabel id="reschedule-installer-label">Crew</InputLabel>
                   <Select
                     {...field}
                     value={field.value ?? ''}
                     labelId="reschedule-installer-label"
-                    label="Installer"
+                    label="Crew"
                   >
                     {eligibleInstallers.map((installer) => (
                       <MenuItem key={installer.id} value={installer.id}>

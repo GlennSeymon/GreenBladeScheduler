@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';
-import type { PublicHoliday } from '@sbg/shared';
+import type { PublicHoliday } from '@greenblade/shared';
 import { apiClient } from './client';
 
 export function usePublicHolidays() {

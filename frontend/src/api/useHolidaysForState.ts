@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { AustralianState } from '@sbg/shared';
+import type { AustralianState } from '@greenblade/shared';
 import { usePublicHolidays } from './usePublicHolidays';
 
 // A national holiday (states: null) applies everywhere; otherwise only to the listed states. Returns a

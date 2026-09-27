@@ -1,33 +1,31 @@
 import { createTheme, type PaletteMode } from '@mui/material/styles';
 
-// Brand colours pulled from SBG's live site (solarbatterygroup.com.au) compiled CSS custom
-// properties — their actual design tokens, not guessed: --primary, --secondary, --tertiary,
-// --surface, --muted, --grey, --red-600, --green-500. Confirms the logo-derived blue/yellow
-// exactly, and supplies the rest of the semantic palette. Their site has no dark mode, so the
-// dark values below extend the same brand rather than copying anything.
-export const brandBlue = '#1d1dff';
-const brandYellow = '#ffdb14';
+// GreenBlade Lawn Care brand palette: forest green primary (from the logo mark) with a warm
+// amber/sun accent as secondary. Semantic colours (error/success) are chosen to stay legible
+// against both, and the dark values extend the same brand rather than being a separate scheme.
+export const brandGreen = '#1b5e20';
+const brandYellow = '#f5b921';
 
-const lightSurface = '#f8f9fa'; // SBG --surface
-const lightText = '#212529'; // SBG --tertiary
-const lightTextSecondary = '#6c757d'; // SBG --grey
-const lightDivider = '#e9ecef'; // SBG --muted
-const lightError = '#e40014'; // SBG --red-600
-const successGreen = '#00c758'; // SBG --green-500, used unchanged in both modes
+const lightSurface = '#f7f9f6';
+const lightText = '#1b2a1e';
+const lightTextSecondary = '#5b6b5e';
+const lightDivider = '#e2e8e2';
+const lightError = '#c62828';
+const successGreen = '#2e9e5b';
 
-const darkBackground = '#0d0e1f'; // near-black, subtly blue-tinted
-const darkPaper = '#171829';
-const darkPrimary = '#5a5aff'; // lightened brandBlue for AA contrast on a dark ground
-const darkText = '#f1f3f5';
-const darkTextSecondary = '#adb5bd';
-const darkError = '#ff5252'; // lightened lightError for AA contrast on a dark ground
+const darkBackground = '#0e1712';
+const darkPaper = '#16211a';
+const darkPrimary = '#4caf50'; // lightened brandGreen for AA contrast on a dark ground
+const darkText = '#eef2ee';
+const darkTextSecondary = '#a9b6ab';
+const darkError = '#ff6659'; // lightened lightError for AA contrast on a dark ground
 
 export function getTheme(mode: PaletteMode) {
   return createTheme({
     palette: {
       mode,
       primary: {
-        main: mode === 'light' ? brandBlue : darkPrimary,
+        main: mode === 'light' ? brandGreen : darkPrimary,
         contrastText: '#ffffff',
       },
       secondary: {

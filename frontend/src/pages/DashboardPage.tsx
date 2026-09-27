@@ -7,7 +7,7 @@ import Skeleton from '@mui/material/Skeleton';
 import { styled } from '@mui/material/styles';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { BarChart } from '@mui/x-charts/BarChart';
-import type { Job } from '@sbg/shared';
+import type { Job } from '@greenblade/shared';
 import { useJobs } from '../api/useJobs';
 import { useInstallers } from '../api/useInstallers';
 
@@ -174,7 +174,7 @@ const DashboardPage = () => {
         <ChartCard>
           <CardContent>
             <Typography variant="subtitle1" gutterBottom>
-              Installer utilisation (scheduled hours)
+              Crew utilisation (scheduled hours)
             </Typography>
             <BarChart
               dataset={installerUtilisation}

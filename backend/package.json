@@ -1,5 +1,5 @@
 {
-  "name": "@sbg/backend",
+  "name": "@greenblade/backend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -18,7 +18,7 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.10.0",
-    "@sbg/shared": "*",
+    "@greenblade/shared": "*",
     "@sentry/node": "^10.74.0",
     "axios": "^1.20.0",
     "date-fns": "^4.4.0",

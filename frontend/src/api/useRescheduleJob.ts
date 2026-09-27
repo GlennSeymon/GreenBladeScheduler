@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { RescheduleJobInput, Job } from '@sbg/shared';
+import type { RescheduleJobInput, Job } from '@greenblade/shared';
 import { apiClient } from './client';
 
 interface RescheduleJobVariables {

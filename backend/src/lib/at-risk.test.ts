@@ -115,7 +115,7 @@ describe('checkUnassignedStartingSoon', () => {
     });
     const violation = checkUnassignedStartingSoon(job, now);
     expect(violation?.rule).toBe('UNASSIGNED_STARTING_SOON');
-    expect(violation?.message).toBe('Job was due to start but still has no installer assigned');
+    expect(violation?.message).toBe('Job was due to start but still has no crew assigned');
   });
 });
 

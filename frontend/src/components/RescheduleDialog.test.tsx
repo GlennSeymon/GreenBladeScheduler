@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { enAU } from 'date-fns/locale';
-import type { Installer, Job } from '@sbg/shared';
+import type { Installer, Job } from '@greenblade/shared';
 import RescheduleDialog from './RescheduleDialog';
 import { apiClient } from '../api/client';
 import NotificationProvider from '../notifications/NotificationProvider';
@@ -95,7 +95,7 @@ describe('RescheduleDialog validation', () => {
       expect(screen.getByText('Provide a new installer and/or start time')).toBeInTheDocument(),
     );
 
-    await user.click(screen.getByRole('combobox', { name: 'Installer' }));
+    await user.click(screen.getByRole('combobox', { name: 'Crew' }));
     await user.click(await screen.findByRole('option', { name: installer.name }));
     await user.click(screen.getByRole('button', { name: /reschedule/i }));
 

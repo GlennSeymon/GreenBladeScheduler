@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';
-import type { Installer } from '@sbg/shared';
+import type { Installer } from '@greenblade/shared';
 import { apiClient } from './client';
 
 export function useInstallers() {

@@ -1,6 +1,6 @@
 import Tooltip from '@mui/material/Tooltip';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
-import type { AtRiskReason } from '@sbg/shared';
+import type { AtRiskReason } from '@greenblade/shared';
 
 interface AtRiskBadgeProps {
   isAtRisk: boolean;

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { AustralianState } from '@sbg/shared';
+import type { AustralianState } from '@greenblade/shared';
 import { useInstallers } from './useInstallers';
 
 // Everything after the first space, so a multi-word surname (e.g. "Te Rangi") stays whole.
