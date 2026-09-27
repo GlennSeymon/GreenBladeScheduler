@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 46" width="48" height="46" role="img" aria-label="GreenBlade Lawn Care">
-  <path d="M24,44 C18,34 18,16 24,4 C30,16 30,34 24,44 Z" fill="#1b5e20" transform="rotate(-22 24 44)"/>
-  <path d="M24,44 C18,34 18,16 24,4 C30,16 30,34 24,44 Z" fill="#2e7d32"/>
-  <path d="M24,44 C18,34 18,16 24,4 C30,16 30,34 24,44 Z" fill="#66bb6a" transform="rotate(22 24 44)"/>
+  <polygon points="8,40 16,40 19,28 11,28" fill="#a5d6a7"/>
+  <polygon points="19,40 27,40 30,16 22,16" fill="#1b5e20"/>
+  <polygon points="30,40 38,40 41,6 33,6" fill="#f5b921"/>
 </svg>
